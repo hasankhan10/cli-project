@@ -104,5 +104,19 @@ program.command("edit")
         }
     })
 })
+program.command("clean")
+.description("Clear the whole file.")
+.option("-f,--file <string>","File name")
+.action((option)=>{
+    fs.writeFile(option.file,"",(err,data)=>{
+        if (err) {
+            console.log(chalk.red("File wirte failed!!!"));
+            
+        } else {
+            console.log(chalk.blue("File clean successfull."));
+            
+        }
+    })
+})
 
 program.parse()
